@@ -93,7 +93,7 @@ Error: ${e.message}`
           if (Platform.OS === 'ios') {
             const RCTRedBox = require('NativeModules').RedBox;
             RCTRedBox && RCTRedBox.dismiss && RCTRedBox.dismiss();
-          } else {
+          } else if (Platform.OS === 'android') {
             const RCTExceptionsManager = require('NativeModules').ExceptionsManager;
             RCTExceptionsManager && RCTExceptionsManager.dismissRedbox && RCTExceptionsManager.dismissRedbox();
           }
