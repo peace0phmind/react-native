@@ -109,13 +109,11 @@ Error: ${e.message}`
           modules.forEach(({id, code}, i) => {
             code = code + '\n\n' + sourceMappingURLs[i];
 
-            if (Platform.OS !== 'web') {
-              require('SourceMapsCache').fetch({
-                text: code,
-                url: `http://${serverHost}${sourceURLs[i]}`,
-                sourceMappingURL: sourceMappingURLs[i],
-              });
-            }
+            require('SourceMapsCache').fetch({
+              text: code,
+              url: `http://${serverHost}${sourceURLs[i]}`,
+              sourceMappingURL: sourceMappingURLs[i],
+            });
 
             // on JSC we need to inject from native for sourcemaps to work
             // (Safari doesn't support `sourceMappingURL` nor any variant when
